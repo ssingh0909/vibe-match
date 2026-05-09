@@ -1,1 +1,12 @@
 @import 'tailwindcss';
+
+@theme {
+  --color-brand-orange: #FF8A3D;
+  --color-brand-blue: #007AFF; /* Standard iOS Blue for buttons */
+}
+
+@layer base {
+  body {
+    @apply bg-gray-100;
+  }
+}

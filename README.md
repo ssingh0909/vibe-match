@@ -1,42 +1,55 @@
-# sv
+# Vibe Match - Prototyping Übung 11
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Vibe Match ist eine prototypische Webanwendung, die es Nutzern ermöglicht, spontane Freizeitaktivitäten in ihrer Nähe zu finden und sich mit Gleichgesinnten zu vernetzen. Basierend auf persönlichen Interessen schlägt die App passende "Vibes" vor.
 
-## Creating a project
+## 🚀 Live Demo
+**URL:** [Link zu deiner Netlify/Vercel App hier einfügen]
 
-If you're seeing this, you've probably already done this step. Congrats!
+## 🛠 Features & Workflows
 
-```sh
-# create a new project
-npx sv create my-app
-```
+### 1. Kern-Workflow: "Vibe finden & buchen" (End-to-End)
+*   **Registrierung/Login:** Nutzer erstellen ein Profil mit ihren Interessen (Hobbys).
+*   **Entdecken:** Im "Swipe-Modus" können Nutzer Aktivitäten durchsehen. Ein Algorithmus priorisiert Aktivitäten, die zu den gewählten Hobbys passen ("DEIN VIBE!").
+*   **Kategorisierung:** Filter für Sport, Musik, Kulinarik, Stadtbetrachten und Freizeit.
+*   **Buchung:** Nutzer können Details einsehen (inkl. Google Maps Integration) und ihre Teilnahme bestätigen oder stornieren.
+*   **Erfolgsbestätigung:** Nach der Buchung erhält der Nutzer eine klare Rückmeldung.
 
-To recreate this project with the same configuration:
+### 2. Erweiterungen (Zusatzpunkte)
+*   **Interessen-Matching:** Automatisierte Priorisierung von Aktivitäten basierend auf Nutzerprofilen.
+*   **Admin-Bereich:** Unter `/admin/add-activity` können neue Aktivitäten erfasst werden (Rollen-Konzept Prototyp).
+*   **Zeitkonflikt-Prüfung:** Das System verhindert die Buchung von zwei Aktivitäten zur gleichen Zeit.
+*   **Dashboard:** Eine Übersicht aller aktuell gebuchten Aktivitäten des Nutzers.
 
-```sh
-# recreate this project
-npx sv@0.15.2 create --template minimal --types ts --add tailwindcss="plugins:none" prettier eslint --no-download-check --install npm vibe-match
-```
+## 💻 Technischer Stack
+*   **Frontend:** SvelteKit (TypeScript)
+*   **Styling:** TailwindCSS
+*   **Datenbank:** MongoDB Atlas (Persistente Speicherung von Usern und Aktivitäten)
+*   **Animationen:** Svelte Transitions (fade, fly)
 
-## Developing
+## ⚙️ Lokale Installation
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+1.  Repository klonen:
+    ```bash
+    git clone [dein-repo-url]
+    ```
+2.  Abhängigkeiten installieren:
+    ```bash
+    npm install
+    ```
+3.  `.env` Datei erstellen und MongoDB URI hinzufügen:
+    ```env
+    MONGODB_URI=mongodb+srv://...
+    ```
+4.  Datenbank initialisieren (optional):
+    ```bash
+    node seed-activities.js
+    node seed-users.js
+    ```
+5.  Entwicklungsserver starten:
+    ```bash
+    npm run dev
+    ```
 
-```sh
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```sh
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+## 📝 Abgabe-Hinweise
+*   **Collaborators:** `mmeisterhans`, `bkuehnis` zum GitHub-Repo hinzufügen.
+*   **Dokumentation:** Diese README dient als Basis für die Projektdokumentation.
