@@ -3,7 +3,7 @@
 Vibe Match ist eine prototypische Webanwendung, die es Nutzern ermöglicht, spontane Freizeitaktivitäten in ihrer Nähe zu finden und sich mit Gleichgesinnten zu vernetzen. Basierend auf persönlichen Interessen schlägt die App passende "Vibes" vor.
 
 ## 🚀 Live Demo
-**URL:** [Link zu deiner Netlify/Vercel App hier einfügen]
+**URL:** [https://vibe-match-ssingh.netlify.app](https://vibe-match-ssingh.netlify.app)
 
 ## 🛠 Features & Workflows
 
