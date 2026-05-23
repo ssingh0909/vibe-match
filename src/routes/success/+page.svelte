@@ -7,7 +7,7 @@
 		</div>
 
 		<h1 class="text-3xl font-bold text-gray-900">Buchung Bestätigt!</h1>
-		<p class="text-gray-600">Viel Spaß bei deiner Aktivität. Wir haben deinen Platz reserviert.</p>
+		<p class="text-gray-600">Viel Spass bei deiner Aktivität. Wir haben deinen Platz reserviert.</p>
 
 		<div class="overflow-hidden rounded-2xl shadow-lg border-2 border-gray-50 my-8">
 			<img

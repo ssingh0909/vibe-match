@@ -5,7 +5,7 @@ export const HOBBIES = [
     { name: 'Bowling', category: 'Sport' },
     { name: 'Wandern', category: 'Sport' },
     { name: 'Yoga', category: 'Sport' },
-    { name: 'Fußball', category: 'Sport' },
+    { name: 'Fussball', category: 'Sport' },
     { name: 'Klettern', category: 'Sport' },
     { name: 'Schwimmen', category: 'Sport' },
     { name: 'Kochen', category: 'Kulinarik' },

@@ -66,9 +66,13 @@
 			</div>
 		</form>
 
-		<div class="text-center">
-			<a href="/register" class="text-sm font-medium text-brand-blue hover:text-blue-500">
-				Noch kein Mitglied? Registriere dich jetzt
+		<div class="text-center pt-6 border-t border-gray-100">
+			<p class="text-xs text-gray-500 mb-3">Noch kein Mitglied?</p>
+			<a 
+				href="/register" 
+				class="inline-block w-full rounded-xl border-2 border-brand-blue/20 bg-blue-50/50 px-6 py-3 text-sm font-bold text-brand-blue hover:bg-brand-blue hover:text-white transition-all active:scale-95 shadow-sm"
+			>
+				Konto erstellen
 			</a>
 		</div>
 	</div>
