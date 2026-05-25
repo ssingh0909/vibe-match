@@ -18,21 +18,26 @@ export const load: PageServerLoad = async ({ cookies, url }) => {
         const friendEmails = currentUser?.friends || [];
 
         // Fetch details for friends
-        const friends = await users.find({ email: { $in: friendEmails } }).toArray();
+        let friends = await users.find({ email: { $in: friendEmails } }).toArray();
+        if (searchQuery) {
+            const regex = new RegExp(searchQuery, 'i');
+            friends = friends.filter(f => regex.test(f.email));
+        }
 
         // Fetch potential new friends or search results
-        let query: any = { email: { $nin: [...friendEmails, userEmail] } };
+        let potentialQuery: any = { 
+            email: { $nin: [...friendEmails, userEmail] } 
+        };
         
-        // If there's a search query, prioritize searching all users (except self and existing friends)
         if (searchQuery) {
-            query.email = { 
+            potentialQuery.email = { 
                 $regex: searchQuery, 
                 $options: 'i',
                 $nin: [...friendEmails, userEmail]
             };
         }
 
-        const potentialFriends = await users.find(query).limit(20).toArray();
+        const potentialFriends = await users.find(potentialQuery).limit(20).toArray();
 
         return {
             friends: friends.map(u => ({

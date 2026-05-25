@@ -28,11 +28,15 @@ export const load: PageServerLoad = async ({ cookies }) => {
         const activities = await activitiesCollection.find().toArray();
 
         const mappedActivities = activities.map(a => {
-            const joinedUsers = a.joinedUsers || [];
+            const joinedUsers = (a.joinedUsers || []) as string[];
             const joinedCount = joinedUsers.length;
             const maxParticipants = parseInt(a.participants.split('/')[1]) || 8;
             const isFull = joinedCount >= maxParticipants;
-            const isJoined = userEmail ? joinedUsers.includes(userEmail) : false;
+            
+            // Check if user has already joined (case-insensitive and trimmed)
+            const isJoined = userEmail 
+                ? joinedUsers.some(u => u.trim().toLowerCase() === userEmail.trim().toLowerCase()) 
+                : false;
             
             // Calculate interest score
             let interestScore = 0;
@@ -68,6 +72,7 @@ export const load: PageServerLoad = async ({ cookies }) => {
             return a.distance - b.distance;
         });
 
+        // Filter out joined activities from the available and full lists
         const available = mappedActivities.filter(a => !a.isFull && !a.isJoined);
         const full = mappedActivities.filter(a => a.isFull && !a.isJoined);
 
