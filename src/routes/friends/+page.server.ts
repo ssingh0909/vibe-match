@@ -22,11 +22,17 @@ export const load: PageServerLoad = async ({ cookies, url }) => {
 
         // Fetch potential new friends or search results
         let query: any = { email: { $nin: [...friendEmails, userEmail] } };
+        
+        // If there's a search query, prioritize searching all users (except self and existing friends)
         if (searchQuery) {
-            query.email = { $regex: searchQuery, $options: 'i' };
+            query.email = { 
+                $regex: searchQuery, 
+                $options: 'i',
+                $nin: [...friendEmails, userEmail]
+            };
         }
 
-        const potentialFriends = await users.find(query).limit(10).toArray();
+        const potentialFriends = await users.find(query).limit(20).toArray();
 
         return {
             friends: friends.map(u => ({
