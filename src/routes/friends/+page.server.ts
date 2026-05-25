@@ -2,11 +2,13 @@ import { connect } from '$lib/server/db';
 import { redirect, fail } from '@sveltejs/kit';
 import type { PageServerLoad, Actions } from './$types';
 
-export const load: PageServerLoad = async ({ cookies }) => {
+export const load: PageServerLoad = async ({ cookies, url }) => {
     const userEmail = cookies.get('userEmail');
     if (!userEmail) {
         throw redirect(303, '/');
     }
+
+    const searchQuery = url.searchParams.get('q');
 
     try {
         const db = await connect();
@@ -18,24 +20,30 @@ export const load: PageServerLoad = async ({ cookies }) => {
         // Fetch details for friends
         const friends = await users.find({ email: { $in: friendEmails } }).toArray();
 
-        // Fetch potential new friends (random selection for now)
-        const potentialFriends = await users.find({ 
-            email: { $nin: [...friendEmails, userEmail] } 
-        }).limit(10).toArray();
+        // Fetch potential new friends or search results
+        let query: any = { email: { $nin: [...friendEmails, userEmail] } };
+        if (searchQuery) {
+            query.email = { $regex: searchQuery, $options: 'i' };
+        }
+
+        const potentialFriends = await users.find(query).limit(10).toArray();
 
         return {
             friends: friends.map(u => ({
                 email: u.email,
                 gender: u.gender,
                 age: u.age,
-                hobbies: u.hobbies
+                hobbies: u.hobbies,
+                imageUrl: u.imageUrl
             })),
             potentialFriends: potentialFriends.map(u => ({
                 email: u.email,
                 gender: u.gender,
                 age: u.age,
-                hobbies: u.hobbies
-            }))
+                hobbies: u.hobbies,
+                imageUrl: u.imageUrl
+            })),
+            searchQuery
         };
     } catch (e) {
         console.error('Failed to load friends:', e);

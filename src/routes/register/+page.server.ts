@@ -9,6 +9,7 @@ export const actions: Actions = {
         const password = data.get('password')?.toString();
         const gender = data.get('gender')?.toString();
         const age = data.get('age')?.toString();
+        const imageUrl = data.get('imageUrl')?.toString();
         const hobbiesRaw = data.get('hobbies')?.toString();
         const notifications = data.get('notifications') === 'on';
 
@@ -29,6 +30,7 @@ export const actions: Actions = {
             password,
             gender,
             age: parseInt(age || '0'),
+            imageUrl,
             hobbies,
             notifications,
             createdAt: new Date()

@@ -15,7 +15,7 @@ const hobbiesPool = [
     { name: 'Bowling', category: 'Sport', titles: ['Bowling Night', 'Strike Challenge', 'Bowling & Pizza'], images: ['https://images.unsplash.com/photo-1544197150-b99a580bb7a8'] },
     { name: 'Wandern', category: 'Sport', titles: ['Bergwanderung', 'Naturspaziergang', 'Uetliberg Tour'], images: ['https://images.unsplash.com/photo-1551632811-561732d1e306'] },
     { name: 'Yoga', category: 'Sport', titles: ['Yoga im Park', 'Morning Flow', 'Entspannungs-Yoga'], images: ['https://images.unsplash.com/photo-1544367567-0f2fcb009e0b'] },
-    { name: 'Fußball', category: 'Sport', titles: ['Kick it like Beckham', 'Feierabend-Kick', 'Fußball Turnier'], images: ['https://images.unsplash.com/photo-1574629810360-7efbbe195018'] },
+    { name: 'Fussball', category: 'Sport', titles: ['Kick it like Beckham', 'Fussball Match', 'Fussball Turnier'], images: ['https://images.unsplash.com/photo-1574629810360-7efbbe195018'] },
     { name: 'Klettern', category: 'Sport', titles: ['Bouldern Session', 'Kletterhalle', 'Outdoor Klettern'], images: ['https://images.unsplash.com/photo-1522163182402-834f871fd851'] },
     { name: 'Schwimmen', category: 'Sport', titles: ['Abkühlung im See', 'Bahnen ziehen', 'Aare Schwimmen'], images: ['https://images.unsplash.com/photo-1519315901367-f34ff9154487'] },
     { name: 'Kochen', category: 'Kulinarik', titles: ['Pasta Kurs', 'Sushi Night', 'Indisch Kochen'], images: ['https://images.unsplash.com/photo-1551183053-bf91a1d81141'] },
@@ -23,7 +23,7 @@ const hobbiesPool = [
     { name: 'Gaming', category: 'Freizeit', titles: ['Boardgame Night', 'Mario Kart Turnier', 'Gaming Session'], images: ['https://images.unsplash.com/photo-1610890716171-6b1bb98ffd09'] },
     { name: 'Fotografie', category: 'Stadtbetrachten', titles: ['Fotowalk City', 'Golden Hour Shooting', 'Street Photography'], images: ['https://images.unsplash.com/photo-1516035069371-29a1b244cc32'] },
     { name: 'Museum', category: 'Stadtbetrachten', titles: ['Kunsthaus Besuch', 'Landesmuseum Tour', 'Technorama Trip'], images: ['https://images.unsplash.com/photo-1554907984-15263bfd63bd'] },
-    { name: 'Konzerte', category: 'Musik', titles: ['Jazz Night', 'Open Air Konzert', 'Live Band im Pub'], images: ['https://images.unsplash.com/photo-1514525253361-bee1a31f440a'] },
+    { name: 'Konzerte', category: 'Musik', titles: ['Jazz Night', 'Open Air Konzert', 'Live Band im Pub'], images: ['https://images.unsplash.com/photo-1415201364774-f6f0bb35f28f'] },
     { name: 'Karaoke', category: 'Musik', titles: ['Karaoke Party', 'Sing your Heart out', 'Karaoke Bar'], images: ['https://images.unsplash.com/photo-1520523839897-bd0b52f945a0'] }
 ];
 

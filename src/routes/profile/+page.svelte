@@ -54,11 +54,35 @@
 						<label for="age" class="block text-sm font-medium text-gray-700">Alter</label>
 						<input type="number" id="age" name="age" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-brand-blue focus:ring-brand-blue" value={user.age} />
 					</div>
+					<div class="col-span-1 sm:col-span-2">
+						<label for="imageUrl" class="block text-sm font-medium text-gray-700">Profilbild URL</label>
+						<input type="url" id="imageUrl" name="imageUrl" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-brand-blue focus:ring-brand-blue" value={user.imageUrl} placeholder="https://..." />
+					</div>
 				</div>
 
 				<div>
-					<label class="block text-sm font-medium text-gray-700 mb-2">Deine Hobbys</label>
-					<div class="flex flex-wrap gap-2">
+					<div class="flex items-center justify-between mb-2">
+						<label class="block text-sm font-medium text-gray-700">Deine Hobbys</label>
+						<div class="flex gap-2">
+							<input 
+								type="text" 
+								id="customHobby" 
+								placeholder="Anderes Hobby..." 
+								class="rounded-md border-gray-300 text-xs shadow-sm focus:border-brand-blue focus:ring-brand-blue py-1 px-2"
+								onkeydown={(e) => {
+									if (e.key === 'Enter') {
+										e.preventDefault();
+										const val = (e.target as HTMLInputElement).value.trim();
+										if (val && !selectedHobbies.includes(val)) {
+											selectedHobbies = [...selectedHobbies, val];
+											(e.target as HTMLInputElement).value = '';
+										}
+									}
+								}}
+							/>
+						</div>
+					</div>
+					<div class="flex flex-wrap gap-2 mb-4">
 						{#each HOBBIES as hobby}
 							<button
 								type="button"
@@ -69,6 +93,20 @@
 							</button>
 						{/each}
 					</div>
+
+					{#if selectedHobbies.length > 0}
+						<div class="flex flex-wrap gap-2 pt-2 border-t border-gray-50 mt-2">
+							{#each selectedHobbies as hobby}
+								{#if !HOBBIES.find(h => h.name === hobby)}
+									<span class="inline-flex items-center gap-1 px-3 py-1 bg-blue-50 border border-blue-200 rounded-full text-xs font-medium text-blue-700">
+										{hobby}
+										<button type="button" onclick={() => toggleHobby(hobby)} class="hover:text-red-500 font-bold ml-1">×</button>
+									</span>
+								{/if}
+							{/each}
+						</div>
+					{/if}
+					
 					<input type="hidden" name="hobbies" value={JSON.stringify(selectedHobbies)} />
 				</div>
 

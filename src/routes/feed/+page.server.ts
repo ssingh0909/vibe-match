@@ -28,9 +28,11 @@ export const load: PageServerLoad = async ({ cookies }) => {
         const activities = await activitiesCollection.find().toArray();
 
         const mappedActivities = activities.map(a => {
-            const joinedCount = (a.joinedUsers || []).length;
+            const joinedUsers = a.joinedUsers || [];
+            const joinedCount = joinedUsers.length;
             const maxParticipants = parseInt(a.participants.split('/')[1]) || 8;
             const isFull = joinedCount >= maxParticipants;
+            const isJoined = userEmail ? joinedUsers.includes(userEmail) : false;
             
             // Calculate interest score
             let interestScore = 0;
@@ -51,8 +53,9 @@ export const load: PageServerLoad = async ({ cookies }) => {
                 hobby: a.hobby,
                 joinedCount,
                 maxParticipants,
-                distance: a.distance || 999,
+                distance: a.distance || 1.5,
                 isFull,
+                isJoined,
                 interestScore
             };
         });
@@ -65,8 +68,8 @@ export const load: PageServerLoad = async ({ cookies }) => {
             return a.distance - b.distance;
         });
 
-        const available = mappedActivities.filter(a => !a.isFull);
-        const full = mappedActivities.filter(a => a.isFull);
+        const available = mappedActivities.filter(a => !a.isFull && !a.isJoined);
+        const full = mappedActivities.filter(a => a.isFull && !a.isJoined);
 
         return {
             activities: available,
